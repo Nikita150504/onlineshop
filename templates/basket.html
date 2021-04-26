@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+<center>
+	<h3 style="font-weight:600;color: #7979ff;">{{ title }}</h3>
+</center>
+
+<div class="container mt-4">
+	<div class="row">
+		<div class="col-12">
+			<div class="row mt-3">
+				<div class="col">
+                {% if tovars_user_col == 0 %}
+                    <div class="content-area text-center mb-2 p-2" style="min-height: 0px;font-size: 18px;">
+                        <div class="row">
+                            <div class="col p-3"><span style="font-weight:600;color: #7979ff;">Корзина пуста</span></div>
+                        </div>
+					</div>
+                {% else %}
+                    {% for bask in basket %}
+					<div class="content-area  mb-2 p-2" style="min-height: 0px;font-size: 18px;">
+                        <div class="row">
+                            <div class="col">
+                                <img src="{{ bask.img }}" style="width: 60px;height: 60px;border-radius: 100%;border:3px solid #7979ff" alt="">
+                            </div>
+                            <div class="col pt-3"><span>{{ bask.name }}</span></div>
+                            <div class="col-3 pt-2"><span style="display: block;padding: 10px;background: #7979ff;border-radius: 10px;color: white">{{ bask.cost }} P</span></div>
+                        </div>
+					</div>
+
+                    {% endfor %}
+
+                    <div class="content-area  mb-2 p-2" style="min-height: 0px;font-size: 18px;">
+                        <div class="row">
+                            <div class="col" style="padding-top: 20px"><span>Итого:</span></div>
+                            <div class="col-3 pt-2 pb-2"><span style="display: block;padding: 10px;background: #7979ff;border-radius: 10px;color: white">{{ all_cost }} P</span></div>
+                            <div class="col-3 pt-2 pb-2">
+                                 {% if current_user.is_authenticated %}
+
+                                <form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+
+                                    {{ form.submit(type="submit", class="btn btn-primary w-100", style="padding:11px;border-radius:10px;", value="Оформить заказ") }}
+
+                                </form>
+                           
+                             {% endif %}
+                            </div>
+                        </div>
+					</div>
+                {% endif %}
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+
+		</div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+<center>
+	<h3 style="font-weight:600;color: #7979ff;">{{ title }}</h3>
+</center>
+{% for tovar in jobs %}
+<div class="col-lg-6 mb-4">
+	<div class="articles column-4  masonry">
+		<article class="default index-0 grid-33 no-author tablet-grid-50 mobile-grid-100 np-mobile&quot; post-162 post type-post status-publish format-standard has-post-thumbnail hentry category-4 masonry-brick" style="">
+			<div class="article-wrapper">
+				<header>
+					<div class="post-format-image post-format-wrapper ">
+						<div class="featured-image"> <a href="/info/{{ tovar.id }}" class="thumb hover-effect">
+                                                                                    <span class="fullimage cover" role="img" aria-label="{{ tovar.name }}" style="background-image: url({{ tovar.img }});"></span>
+                                                                        </a>
+							<div class="tags absolute">
+								<a href="info/{{ tovar.id }}" class="tag-link-4">
+									{{ tovar.cost }} <i class="fa fa-rub"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					<h1 class="title main-title gradient-effect"><a>{{ tovar.name }}</a></h1>
+				</header>
+				<div class="post-excerpt">
+					<div class="clear"></div>
+				</div>
+				<footer class="author-meta">
+					<div class="clear"></div>
+				</footer>
+			</div>
+		</article>
+	</div>
+</div>
+
+{% endfor %}
+{% endblock %}

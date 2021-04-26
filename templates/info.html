@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+<center>
+	<h3 style="font-weight:600;color: #7979ff;">{{ info.name }}</h3>
+</center>
+<style>
+
+
+			 div.articles .post-format-wrapper {
+                position: relative;
+                z-index: 2;
+                margin: -20px -20px 0;
+                margin-bottom: 20px
+            }
+            div.articles .post-format-wrapper .video-overlay {
+                cursor: pointer
+            }
+             div.articles.columns-4 article .post-format-wrapper {
+                margin-bottom: 18px
+            }
+             div.articles.classic article .post-format-wrapper {
+                margin: 20px 15px;
+                -webkit-box-shadow: 0 3px 12px -1px rgba(7,10,25,0.2),0 22px 27px -20px rgba(7,10,25,0.2);
+                box-shadow: 0 3px 12px -1px rgba(7,10,25,0.2),0 22px 27px -20px rgba(7,10,25,0.2);
+                border-radius: 15px
+            }
+
+            .post-format-wrapper {
+                position: relative;
+                z-index: 2;
+                margin-bottom: 25px
+            }
+              div.articles article .post-format-gallery,div.articles article .post-format-gallery div.item,div.articles article .post-format-wrapper iframe,div.articles article a.thumb {
+                    min-height: 200px;
+                    height: 200px!important
+                }
+                 div.articles.classic article .post-format-wrapper {
+                    margin: 0 0 10px
+                }
+                 .post-format-wrapper {
+                    margin-top: 20px;
+                    margin-bottom: 15px
+                }
+                .featured-image:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                display:none;
+                width: 100%;
+                height: 30%;
+                background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(rgba(0,0,0,0.5)));
+                background: -o-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+                background: linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%)
+            }
+
+            div.tags {
+                display: block;
+            	transition:.5s;
+		}
+
+            div.tags.absolute {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    text-align: left;
+}
+
+ div.tags:hover{
+ 	opacity:0;
+ 	cursor:normal!important;
+ 	transition:.5s;
+ }
+
+             .no-thumb.widget_epcl_tag_cloud,.no-thumb.widget_tag_cloud,div.tags.no-thumb {
+                margin-bottom: 12.5px;
+                margin-top: -38px
+            }
+
+            .widget_epcl_tag_cloud a,.widget_epcl_tag_cloud span,.widget_tag_cloud a,.widget_tag_cloud span,div.tags a,div.tags span {
+                font-size: 15px;
+                color: #fff;
+                display: inline-block;
+                padding: 4px 25px;
+                vertical-align: top;
+                border-radius: 3px;
+                margin-bottom: 5px;
+                margin-right: 5px;
+                border-radius: 25px;
+                font-family: "Montserrat",sans-serif;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                background-color: #7979ff;
+            }
+
+
+           a {
+                color: #333;
+                -webkit-transition: all 300ms ease;
+                -o-transition: all 300ms ease;
+                transition: all 300ms ease
+            }
+
+            a:hover {
+                color: #00BEC1
+            }
+              a {
+                text-decoration: none!important;
+                outline: 0
+            }
+
+
+                 .featured-image {
+                /*height: 400px;*/
+                position: relative;
+                z-index: 1;
+                border-radius: 15px;
+                overflow: hidden;
+                margin-bottom: 50px
+            }
+
+
+             .featured-image .top {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 2;
+                font-size: 14px
+            }
+
+             .featured-image .top a {
+                color: #fff
+            }
+
+             .featured-image .top svg {
+                fill: #fff
+            }
+
+             .featured-image .top i {
+                color: #fff!important;
+                margin-left: 0;
+                margin-right: 3px
+            }
+
+             .featured-image .top, .featured-image div.info {
+                padding: 40px 40px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                z-index: 3;
+                color: #fff;
+                text-shadow: 0px 2px 0px rgba(0,0,0,0.3)
+            }
+
+            .fullcover #comments.hosted .comment .featured-image .top .comment-author,.fullcover .hosted .comment .featured-image div.info .comment-author,#single.fullcover .featured-image .top #comments.hosted .comment .comment-author,#single.fullcover .featured-image .top .title,#single.fullcover .featured-image .top .wpcf7 label,#single.fullcover .featured-image div.info #comments.hosted .comment .comment-author,#single.fullcover .featured-image div.info .title,#single.fullcover .featured-image div.info .wpcf7 label,.wpcf7 #single.fullcover .featured-image .top label,.wpcf7 #single.fullcover .featured-image div.info label {
+                margin-bottom: 0
+            }
+
+            .fullcover .featured-image .top .widget_epcl_tag_cloud,.fullcover .featured-image .top .widget_tag_cloud,.fullcover .featured-image .top div.tags,#single.fullcover .featured-image div.info .widget_epcl_tag_cloud,#single.fullcover .featured-image div.info .widget_tag_cloud,#single.fullcover .featured-image div.info div.tags {
+                text-shadow: none;
+                margin-bottom: 10px
+            }
+
+            .fullcover .featured-image .top .widget_epcl_tag_cloud a,.fullcover .featured-image .top .widget_tag_cloud a,.fullcover .featured-image .top div.tags a,#single.fullcover .featured-image div.info .widget_epcl_tag_cloud a,#single.fullcover .featured-image div.info .widget_tag_cloud a,#single.fullcover .featured-image div.info div.tags a {
+                margin-left: 0;
+                margin-right: 5px
+            }
+
+            .fullcover .featured-image .top time,.fullcover .featured-image div.info time {
+                opacity: 1;
+                margin-right: 20px;
+                color: #fff
+            }
+
+            .fullcover .featured-image .top time svg,.fullcover .featured-image div.info time svg {
+                fill: #fff
+            }
+
+             .featured-image {
+                border-radius: 15px;
+                overflow: hidden;
+                position: relative
+            }
+
+             .featured-image img {
+                display: block;
+                width: 100%;
+                height: auto
+            }
+
+		</style>
+
+<div class="container mt-4">
+	<div class="row">
+		<div class="col-12">
+			<div class="row mt-3">
+				<div class="col">
+					<div class="content-area text-center" style="padding: 0px;">
+                        <div class="row">
+                            <div class="col">
+                                <article class="articles main-article post-148 post type-post status-publish format-standard has-post-thumbnail hentry category-2">
+						<header>
+
+    	<div class="post-format-image post-format-wrapper ">
+                                    <div class="featured-image" style="padding:10px;text-align:center;">
+                                    	<center>
+                                    	<div style="position:relative;max-width:400px">
+                                    		<center> <img  src="{{ info.img }}"  class="attachment-epcl_single_standard size-epcl_single_standard wp-post-image" alt="" style=" border-radius: 10px;max-width:400px;" loading="lazy" data-lazy="false">
+                                            <div class="tags absolute"><a href="#" class="tag-link-2">{{ info.cost }} <i class="fa fa-rub"></i></a></div> </center>
+                                    	</div></center>
+
+                                                          </div>
+            			</div>
+
+    <!-- start: .meta -->
+
+
+        <!--<h3 style="font-weight:600;color: #7979ff;" >Скрипт рулетки Cabura c новым дизайном (trixcash)</h3>-->
+
+    <!-- end: .meta -->
+
+	<div class="clear"></div>
+
+</header>
+</article>
+                            </div>
+                            <div class="col p-4 text-left mt-1">
+                                <span>Адрес магазина: {{ info.adress }}</span><br>
+                                <span>Адрес на карте:</span>
+                                <div id="map" style="width: 600px; height: 400px"></div>
+                            </div>
+
+            {% if current_user.is_authenticated %}
+                            <div class="col-12 pb-3">
+                                <form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+                                    {{ form.id_tovar(class="form-control", type="hidden", value=info.id ) }}
+                                    {{ form.submit(type="submit", class="btn btn-primary") }}
+
+                                </form>
+                            </div>
+                             {% endif %}
+                        </div>
+
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+
+		</div>
+
+</div>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&lang=ru_RU" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    ymaps.ready(init);
+
+    function init() {
+        // Создание карты.
+        // https://tech.yandex.ru/maps/doc/jsapi/2.1/dg/concepts/map-docpage/
+        var myMap = new ymaps.Map("map", {
+            // Координаты центра карты.
+            // Порядок по умолчнию: «широта, долгота».
+            center: [{{ x }}, {{ y }}],
+            // Уровень масштабирования. Допустимые значения:
+            // от 0 (весь мир) до 19.
+            zoom: 12,
+            // Элементы управления
+            // https://tech.yandex.ru/maps/doc/jsapi/2.1/dg/concepts/controls/standard-docpage/
+            controls: [
+
+                'zoomControl', // Ползунок масштаба
+                'rulerControl', // Линейка
+                'routeButtonControl', // Панель маршрутизации
+                'trafficControl', // Пробки
+                'typeSelector', // Переключатель слоев карты
+                'fullscreenControl', // Полноэкранный режим
+
+                // Поисковая строка
+                new ymaps.control.SearchControl({
+                    options: {
+                        // вид - поисковая строка
+                        size: 'large',
+                        // Включим возможность искать не только топонимы, но и организации.
+                        provider: 'yandex#search'
+                    }
+                })
+
+            ]
+        });
+
+        // Добавление метки
+        // https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/Placemark-docpage/
+
+
+    }
+
+    function hello(){
+        $('.ymaps-2-1-78-searchbox-input__input').val("{{ info.adress }}")
+        $('.ymaps-2-1-78-searchbox-button-text').click()
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(hello, 2000);
+    }, false);
+</script>
+
+
+{% endblock %}
